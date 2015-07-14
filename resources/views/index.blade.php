@@ -34,7 +34,7 @@
 
 <body id="page-top">
 
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+<!--    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -54,7 +54,7 @@
                         <a class="page-scroll" href="#services">Services</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#portfolio">Portfolio</a>
+                        <a class="page-scroll" href="#something">Something</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
@@ -62,9 +62,8 @@
                 </ul>
             </div>
         </div>
-    </nav>
-
-
+    </nav>-->
+    
 
     <section class="bg-primary" id="about">
         <div class="container">
@@ -87,61 +86,318 @@
                 </div>
             </div>
         </div>
-        
+        <div class="main-container-center">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-9">
                     <div class="panel-group" id="accordion">
-                        <div class="panel panel-info">
+                        <div class="panel panel-info" id="existing">
                             <div class="panel-heading feature-heading-font">
                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" href="#collapse1">Existing Site</a>
+                                    <a data-toggle="collapse" href="#existing_collapse">{{ $existing['heading'] }}</a>
                                 </h4>
                             </div>
-                            <div id="collapse1" class="panel-collapse collapse in">
+                            <div id="existing_collapse" class="panel-collapse collapse in">
                                 <div class="panel-body">
-                                    <strong>Is this for an existing site?</strong>
+                                    <p><strong> {{ $existing['title'] }} </strong></p>
                                     <div class="row col-lg-12">
-                                        <input type="radio" name="is_new_site" value="true"/> No, this is for a brand-new site
-                                        <br/>
-                                        <input type="radio" name="is_new_site" value="true"/> Yes, I want my existing site re-built / re-designed
-                                    </div>  
+                                        @foreach ($existing['options'] as $option)
+                                            <input type="radio" name="is_new_site" value="{{ $option['value'] }}"/> {{ $option['description'] }}<br/>
+                                        @endforeach
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <br/>
-                        <div class="panel panel-info">
+                        <div class="panel panel-info" id="main-features">
                             <div class="panel-heading feature-heading-font">
                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" href="#collapse2">Main Website Features</a>
+                                    <a data-toggle="collapse" href="#main_features_collapse">{{ $main_features['heading'] }}</a>
                                 </h4>
                             </div>
-                            <div id="collapse2" class="panel-collapse collapse in">
+                            <div id="main_features_collapse" class="panel-collapse collapse in">
                                 <div class="panel-body">
-                                    <strong>Select all that apply (very important)</strong><br/><br/>
+                                    <strong>{{ $main_features['title'] }}</strong><br/><br/>
                                     <div class="row col-lg-12">
-                                        <input type="checkbox" id="ecommerce" name="site_type[]" value=""/><i><strong> Ecommerce </strong> <br/> Select this box if your website will have any kind of commerce, shopping, or sales capabilities.</i><br/><br/>
-                                        <div id="ecommerce-features">
+                                        @foreach ($main_features['options'] as $option)
+                                            <input type="checkbox" id="{{ $option['value'] }}" name="main_website_features[]" value="{{ $option['value'] }}"/><i><strong> {{ $option['title'] }} </strong> <p> {{ $option['description'] }}</p></i>
+                                            @if ($option['value'] == 'ecommerce')
+                                                <div id="ecommerce-features">
+                                                    <div class="row">
+                                                        <div class="col-lg-11 pull-right">
+                                                            <div class="panel panel-default">
+                                                                <div class="panel-body">
+                                                                    <p><strong> {{ $ecommerce_payment['title'] }} </strong></p>
+                                                                    @foreach ($ecommerce_payment['options'] as $option)
+                                                                        <input type="checkbox" name="ecommerce_payment[]" value="{{ $option['value'] }}"/> {{ $option['description'] }}<br/>
+                                                                    @endforeach
+                                                                </div>                                                           
+                                                                <div class="panel-body">
+                                                                    <p><strong> {{ $ecommerce_products_upload['title'] }} </strong></p>
+                                                                    @foreach ($ecommerce_products_upload['options'] as $option)
+                                                                        <input type="radio" name="ecommerce_products_upload" value="{{ $option['value'] }}"/> {{ $option['description'] }}<br/>
+                                                                    @endforeach
+                                                                </div>
+                                                                <div class="panel-body">
+                                                                    <p><strong> {{ $ecommerce_products_quantity['title'] }} </strong></p>
+                                                                    @foreach ($ecommerce_products_quantity['options'] as $option)
+                                                                        <input type="radio" name="ecommerce_products_quantity" value="{{ $option['value'] }}"/> {{ $option['description'] }}<br/>
+                                                                    @endforeach
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br/>
+                                                </div>
+                                            @endif
                                             
-                                        </div>
-                                        <input type="checkbox" id="informational" name="site_type[]" value=""/><i><strong> Informational </strong> <br/> Select this box if your website will have static, informational pages (should be most sites).</i><br/><br/>
-                                        <input type="checkbox" id="portfolio" name="site_type[]" value=""/><i><strong> Portfolio </strong> <br/> Select this box if your website will have image galleries, portfolios, or photo pages (ex. modeling shoots, design portfolios, product galleries).</i><br/><br/>
-                                        <input type="checkbox" id="blog" name="site_type[]" value=""/><i><strong> Blog </strong> <br/> Select this box if your website will have a working blog, whether that's the primary focus or an addition to the site. We recommend blogs on all sites for a variety of reasons.</i><br/><br/>
-                                        <input type="checkbox" id="community" name="site_type[]" value=""/><i><strong> Community (Forum, Chat Room) </strong> <br/>Select this box if your website will have an interactive forum, many blog authors that can sign up independent, or acts as a social community for multiple people.</i><br/><br/>
+                                            @if ($option['value'] == 'portfolio')
+                                                <div id="portfolio-features">
+                                                    <div class="row">
+                                                        <div class="col-lg-11 pull-right">
+                                                            <div class="panel panel-default">
+                                                                <div class="panel-body">
+                                                                    <p><strong> {{ $portfolio_features['title'] }} </strong></p>
+                                                                    @foreach ($portfolio_features['options'] as $option)
+                                                                        <input type="radio" name="portfolio_features" value="{{ $option['value'] }}"/> {{ $option['description'] }}<br/>
+                                                                    @endforeach
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br/>
+                                                </div>
+                                            @endif
+                                            
+                                            @if ($option['value'] == 'blog')
+                                                <div id="blog-features">
+                                                    <div class="row">
+                                                        <div class="col-lg-11 pull-right">
+                                                            <div class="panel panel-default">
+                                                                <div class="panel-body">
+                                                                    <p><strong> {{ $blog_features['title'] }} </strong></p>
+                                                                    @foreach ($blog_features['options'] as $option)
+                                                                        <input type="checkbox" name="blog_features[]" value="{{ $option['value'] }}"/> {{ $option['description'] }}<br/>
+                                                                    @endforeach
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br/>
+                                                </div>
+                                            @endif
+                                        @endforeach
                                     </div>                            
                                 </div>
                             </div>
                         </div>
                         <br/>
+                        <div class="panel panel-info" id="size">
+                            <div class="panel-heading feature-heading-font">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#size_collapse">{{ $size['heading'] }}</a>
+                                </h4>
+                            </div>
+                            <div id="size_collapse" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <p><strong> {{ $size['title'] }} </strong></p>
+                                    <div class="row col-lg-12">
+                                        @foreach ($size['options'] as $option)
+                                            <input type="radio" name="size" value="{{ $option['value'] }}"/> {{ $option['description'] }}<br/>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>                    
-                </div>
+                        <br/>
+                        <div class="panel panel-info" id="public-site-features">
+                            <div class="panel-heading feature-heading-font">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#public_site_collapse">{{ $public_site_features['heading'] }}</a>
+                                </h4>
+                            </div>
+                            <div id="public_site_collapse" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <p><strong> {{ $public_site_features['title'] }} </strong></p>
+                                    <div class="row col-lg-12">
+                                        @foreach ($public_site_features['options'] as $option)
+                                            <input type="checkbox" name="public_site_features[]" value="{{ $option['value'] }}"/> {{ $option['description'] }}<br/>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="panel panel-info" id="graphics">
+                            <div class="panel-heading feature-heading-font">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#graphics_collapse">{{ $graphics_features['heading'] }}</a>
+                                </h4>
+                            </div>
+                            <div id="graphics_collapse" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <p><strong> {{ $graphics_features['title'] }} </strong></p>
+                                    <div class="row col-lg-12">
+                                        @foreach ($graphics_features['options'] as $option)
+                                            <input type="radio" name="graphics_features" value="{{ $option['value'] }}"/> {{ $option['description'] }}<br/>
+                                        @endforeach
+                                    </div>
+                                </div>                                
+                                <div class="panel-body">
+                                    <p><strong> {{ $logo_details['title'] }} </strong></p>
+                                    <div class="row col-lg-12">
+                                        @foreach ($logo_details['options'] as $option)
+                                            <input type="checkbox" name="is_logo_required[]" value="{{ $option['value'] }}"/> {{ $option['description'] }}<br/>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="panel panel-info" id="site-content">
+                            <div class="panel-heading feature-heading-font">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#site_content_collapse">{{ $site_content['heading'] }}</a>
+                                </h4>
+                            </div>
+                            <div id="site_content_collapse" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <p><strong> {{ $site_content['title'] }} </strong></p>
+                                    <div class="row col-lg-12">
+                                        @foreach ($site_content['options'] as $option)
+                                            <input type="radio" name="site_content" value="{{ $option['value'] }}"/> {{ $option['description'] }}<br/>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="panel panel-info" id="timeframe">
+                            <div class="panel-heading feature-heading-font">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#time_frame_collapse">{{ $time_frame['heading'] }}</a>
+                                </h4>
+                            </div>
+                            <div id="time_frame_collapse" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <p><strong> {{ $time_frame['title'] }} </strong></p>
+                                    <div class="row col-lg-12">
+                                        @foreach ($time_frame['options'] as $option)
+                                            <input type="radio" name="site_content" value="{{ $option['value'] }}"/> {{ $option['description'] }}<br/>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                    </div>
+                </div>    
+       
+                
+                <script>
+    body {
+	padding-top:50px;
+}
+
+#masthead {
+	min-height:270px;
+	background-color:#000044;
+  	color:#aaaacc;
+}
+
+#masthead h1 {
+	font-size: 55px;
+	line-height: 1;
+}
+
+#masthead .well {
+	margin-top:13%;
+	background-color:#111155;
+  	border-color:#000033;
+}
+
+.icon-bar {
+	background-color:#fff;
+}
+
+@media screen and (min-width: 768px) {
+	#masthead h1 {
+		font-size: 100px;
+	}
+}
+
+.navbar-bright {
+	background-color:#111155;
+    color:#fff;
+}
+  
+.navbar-bright a, #masthead a, #masthead .lead {
+  	color:#aaaacc;
+}
+
+.navbar-bright li > a:hover {
+    background-color:#000033;
+}
+
+.affix-top,.affix{
+	position: static;
+}
+
+@media (min-width: 979px) {
+  #sidebar.affix-top {
+    position: static;
+  	margin-top:30px;
+  	width:228px;
+  }
+  
+  #sidebar.affix {
+    position: fixed;
+    top:70px;
+    width:228px;
+  }
+}
+
+#sidebar li.active {
+  	border:0 #eee solid;
+  	border-right-width:4px;
+}
+
+#mainCol h2 {
+	padding-top: 55px;
+    margin-top: -55px;
+}
+    </script>
+<!--        <div class="col-sm-2 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+              <div class="" id="leftCol">
+                <ul class="nav nav-stacked" id="sidebar">
+                    <li><a href="#sec0">Section 0</a></li>
+                    <li><a href="#sec1">Section 1</a></li>
+                    <li><a href="#sec2">Section 2</a></li>
+                    <li><a href="#sec3">Section 3</a></li>
+                    <li><a href="#sec4">Section 4</a></li>
+                </ul>
+            </div>              
+          </div>
+        </div> /.blog-sidebar -->
+
+
+                
+                
+                
             </div>
         </div>
-        
+    </div>
+        <div id="theFixed" style="position:fixed;top:530;background-color:red;margin-left: 1100px; width: 10%;">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis scelerisque odio sed risus grav
+        </div>
+<!--    <div class="main-container-right">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis scelerisque odio sed risus gravida, ut feugiat nisl varius.</p>
+            
+    </div>-->
     </section>
 
-    <section id="services1">
+    <section id="something">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">

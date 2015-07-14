@@ -7,8 +7,47 @@
 (function($) {
     "use strict"; // Start of use strict
     
+    $(window).scroll(function(){
+        var s = Math.max(10,(530-$(this).scrollTop()));
+        $("#theFixed").css("top", s);
+    });
+    
+    
+//    
+//    $('#sidebar').affix({
+//      offset: {
+//        top: 245
+//      }
+//});
+//
+//var $body   = $(document.body);
+//var navHeight = $('.navbar').outerHeight(true) + 10;
+//
+//$body.scrollspy({
+//	target: '#leftCol',
+//	offset: navHeight
+//});
+    
+    $('#ecommerce-features').hide();
+    $('#portfolio-features').hide();
+    $('#blog-features').hide();
+    
     $('#ecommerce').change(function(){
-        alert($('#ecommerce').val());
+        $("#ecommerce-features").toggle("slow", function(){
+            this.checked;
+        });
+    });
+    
+    $('#portfolio').change(function(){
+        $("#portfolio-features").toggle("slow", function(){
+            this.checked;
+        });
+    });
+    
+    $('#blog').change(function(){
+        $("#blog-features").toggle("slow", function(){
+            this.checked;
+        });
     });
 
     // jQuery for page scrolling feature - requires jQuery Easing plugin
