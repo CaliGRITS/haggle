@@ -11,8 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
-Route::get('/calculate', 'IndexController@index');
+Route::get('/', 'IndexController@index');
+Route::get('/calculate', 'CalculatorController@calculate');

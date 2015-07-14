@@ -8,33 +8,27 @@
     "use strict"; // Start of use strict
     
     $(window).scroll(function(){
-        var s = Math.max(10,(530-$(this).scrollTop()));
+        var s = Math.max(70,(530-$(this).scrollTop()));
         $("#theFixed").css("top", s);
-    });
-    
-    
-//    
-//    $('#sidebar').affix({
-//      offset: {
-//        top: 245
-//      }
-//});
-//
-//var $body   = $(document.body);
-//var navHeight = $('.navbar').outerHeight(true) + 10;
-//
-//$body.scrollspy({
-//	target: '#leftCol',
-//	offset: navHeight
-//});
+    });    
     
     $('#ecommerce-features').hide();
     $('#portfolio-features').hide();
     $('#blog-features').hide();
     
     $('#ecommerce').change(function(){
+//        $.ajax({
+//            type: "GET",
+//            url: "calculate",
+//            data: 'query=1',
+//            cache: false,
+//            success: function(html){
+//                    alert(html);
+//            }
+//        });
         $("#ecommerce-features").toggle("slow", function(){
             this.checked;
+            console.log($("#ecommerce").val());
         });
     });
     

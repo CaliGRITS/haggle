@@ -34,7 +34,7 @@
 
 <body id="page-top">
 
-<!--    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -62,7 +62,7 @@
                 </ul>
             </div>
         </div>
-    </nav>-->
+    </nav>
     
 
     <section class="bg-primary" id="about">
@@ -80,18 +80,17 @@
     <section id="services">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
+                <div class="col-lg-9 text-center">
                     <h2 class="section-heading wow bounceIn">Instant Price Calculator</h2>
                     <hr class="primary">
                 </div>
             </div>
         </div>
-        <div class="main-container-center">
         <div class="container">
             <div class="row">
                 <div class="col-lg-9">
                     <div class="panel-group" id="accordion">
-                        <div class="panel panel-info" id="existing">
+                        <div class="panel panel-info wow bounceIn" id="existing">
                             <div class="panel-heading feature-heading-font">
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" href="#existing_collapse">{{ $existing['heading'] }}</a>
@@ -108,8 +107,8 @@
                                 </div>
                             </div>
                         </div>
-                        <br/>
-                        <div class="panel panel-info" id="main-features">
+                        <br/><br/>
+                        <div class="panel panel-info wow bounceIn" id="main-features">
                             <div class="panel-heading feature-heading-font">
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" href="#main_features_collapse">{{ $main_features['heading'] }}</a>
@@ -191,8 +190,8 @@
                                 </div>
                             </div>
                         </div>
-                        <br/>
-                        <div class="panel panel-info" id="size">
+                        <br/><br/>
+                        <div class="panel panel-info wow bounceIn" id="size">
                             <div class="panel-heading feature-heading-font">
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" href="#size_collapse">{{ $size['heading'] }}</a>
@@ -209,8 +208,8 @@
                                 </div>
                             </div>
                         </div>
-                        <br/>
-                        <div class="panel panel-info" id="public-site-features">
+                        <br/><br/>
+                        <div class="panel panel-info wow bounceIn" id="public-site-features">
                             <div class="panel-heading feature-heading-font">
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" href="#public_site_collapse">{{ $public_site_features['heading'] }}</a>
@@ -227,8 +226,8 @@
                                 </div>
                             </div>
                         </div>
-                        <br/>
-                        <div class="panel panel-info" id="graphics">
+                        <br/><br/>
+                        <div class="panel panel-info wow bounceIn" id="graphics">
                             <div class="panel-heading feature-heading-font">
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" href="#graphics_collapse">{{ $graphics_features['heading'] }}</a>
@@ -253,8 +252,8 @@
                                 </div>
                             </div>
                         </div>
-                        <br/>
-                        <div class="panel panel-info" id="site-content">
+                        <br/><br/>
+                        <div class="panel panel-info wow bounceIn" id="site-content">
                             <div class="panel-heading feature-heading-font">
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" href="#site_content_collapse">{{ $site_content['heading'] }}</a>
@@ -271,8 +270,8 @@
                                 </div>
                             </div>
                         </div>
-                        <br/>
-                        <div class="panel panel-info" id="timeframe">
+                        <br/><br/>
+                        <div class="panel panel-info wow bounceIn" id="timeframe">
                             <div class="panel-heading feature-heading-font">
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" href="#time_frame_collapse">{{ $time_frame['heading'] }}</a>
@@ -289,112 +288,22 @@
                                 </div>
                             </div>
                         </div>
-                        <br/>
                     </div>
-                </div>    
-       
-                
-                <script>
-    body {
-	padding-top:50px;
-}
-
-#masthead {
-	min-height:270px;
-	background-color:#000044;
-  	color:#aaaacc;
-}
-
-#masthead h1 {
-	font-size: 55px;
-	line-height: 1;
-}
-
-#masthead .well {
-	margin-top:13%;
-	background-color:#111155;
-  	border-color:#000033;
-}
-
-.icon-bar {
-	background-color:#fff;
-}
-
-@media screen and (min-width: 768px) {
-	#masthead h1 {
-		font-size: 100px;
-	}
-}
-
-.navbar-bright {
-	background-color:#111155;
-    color:#fff;
-}
-  
-.navbar-bright a, #masthead a, #masthead .lead {
-  	color:#aaaacc;
-}
-
-.navbar-bright li > a:hover {
-    background-color:#000033;
-}
-
-.affix-top,.affix{
-	position: static;
-}
-
-@media (min-width: 979px) {
-  #sidebar.affix-top {
-    position: static;
-  	margin-top:30px;
-  	width:228px;
-  }
-  
-  #sidebar.affix {
-    position: fixed;
-    top:70px;
-    width:228px;
-  }
-}
-
-#sidebar li.active {
-  	border:0 #eee solid;
-  	border-right-width:4px;
-}
-
-#mainCol h2 {
-	padding-top: 55px;
-    margin-top: -55px;
-}
-    </script>
-<!--        <div class="col-sm-2 col-sm-offset-1 blog-sidebar">
-          <div class="sidebar-module sidebar-module-inset">
-              <div class="" id="leftCol">
-                <ul class="nav nav-stacked" id="sidebar">
-                    <li><a href="#sec0">Section 0</a></li>
-                    <li><a href="#sec1">Section 1</a></li>
-                    <li><a href="#sec2">Section 2</a></li>
-                    <li><a href="#sec3">Section 3</a></li>
-                    <li><a href="#sec4">Section 4</a></li>
-                </ul>
-            </div>              
-          </div>
-        </div> /.blog-sidebar -->
-
-
-                
-                
-                
+                </div>
             </div>
         </div>
-    </div>
-        <div id="theFixed" style="position:fixed;top:530;background-color:red;margin-left: 1100px; width: 10%;">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis scelerisque odio sed risus grav
+        <div class="container col-lg-2" id="theFixed" style="position:fixed; top:530; margin-left: 1000px;">
+            <div class="panel panel-default">
+                <div class="panel-heading feature-heading-font">
+                    <h4 class="panel-title">
+                        <span>Total Amount</span>
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <span id="total-amount"></span>
+                </div>
+            </div>               
         </div>
-<!--    <div class="main-container-right">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis scelerisque odio sed risus gravida, ut feugiat nisl varius.</p>
-            
-    </div>-->
     </section>
 
     <section id="something">
