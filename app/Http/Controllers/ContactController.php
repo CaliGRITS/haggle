@@ -111,8 +111,26 @@ class ContactController extends Controller
         $is_new_site = isset($site_requirement['is_new_site']) 
                 ? ContactController::getExactFeatureDetails("existing", $site_requirement['is_new_site'])
                 : NULL;
-//        $main_website_features = isset($site_requirement['main_website_features']) ? $site_requirement['main_website_features'] : NULL;
-//        $ecommerce_payment = isset($site_requirement['ecommerce_payment']) ? $site_requirement['ecommerce_payment'] : NULL;
+        
+        $main_website_features = isset($site_requirement['main_website_features']) 
+                ? $site_requirement['main_website_features'] 
+                : NULL;
+        
+        if ($main_website_features)
+        {
+            $main_features = ContactController::getSiteFeaturesOfArrayProp($main_website_features, "main-feature");
+        }
+
+        $ecommerce_payment = isset($site_requirement['ecommerce_payment']) 
+                ? $site_requirement['ecommerce_payment'] 
+                : NULL;
+        
+        
+        if ($ecommerce_payment)
+        {
+            $ecommerce_payment_options = ContactController::getSiteFeaturesOfArrayProp($ecommerce_payment, 'ecommerce-payment');
+        }
+
         $ecommerce_products_upload = isset($site_requirement['ecommerce_products_upload']) 
                 ? ContactController::getExactFeatureDetails("ecommerce-upload-products", $site_requirement['ecommerce_products_upload'])
                 : NULL;
@@ -122,15 +140,40 @@ class ContactController extends Controller
         $portfolio_features = isset($site_requirement['portfolio_features']) 
                 ? ContactController::getExactFeatureDetails("portfolio", $site_requirement['portfolio_features'])
                 : NULL;
-//        $blog = isset($site_requirement['blog']) ? $site_requirement['blog'] : NULL;
+        
+        $blog = isset($site_requirement['blog_features']) 
+                ? $site_requirement['blog_features'] 
+                : NULL;
+        if ($blog)
+        {
+            $blog_options = ContactController::getSiteFeaturesOfArrayProp($blog, 'blog');
+        }
+        
         $size = isset($site_requirement['size']) 
                 ? ContactController::getExactFeatureDetails("size", $site_requirement['size'])
                 : NULL;
-//        $public_site_features = isset($site_requirement['public_site_features']) ? $site_requirement['public_site_features'] : NULL;
+        
+        $public_site_features = isset($site_requirement['public_site_features']) 
+                ? $site_requirement['public_site_features'] 
+                : NULL;
+        
+        if ($public_site_features)
+        {
+            $blog_options = ContactController::getSiteFeaturesOfArrayProp($public_site_features, "public-site");
+        }
+        
         $graphics_features = isset($site_requirement['graphics_features']) 
                 ? ContactController::getExactFeatureDetails("graphics", $site_requirement['graphics_features'])
                 : NULL;
-//        $is_logo_required = isset($site_requirement['is_logo_required']) ? $site_requirement['is_logo_required'] : NULL;
+        
+        $is_logo_required = isset($site_requirement['is_logo_required']) 
+                ? $site_requirement['is_logo_required'] 
+                : NULL;
+        if ($is_logo_required)
+        {
+            $logo_options = ContactController::getSiteFeaturesOfArrayProp($is_logo_required, "logo");
+        }
+        
         $site_content = isset($site_requirement['site_content']) 
                 ? ContactController::getExactFeatureDetails("site-content", $site_requirement['site_content'])
                 : NULL;
@@ -138,17 +181,20 @@ class ContactController extends Controller
                 ? ContactController::getExactFeatureDetails("time-frame", $site_requirement['time_frame'])
                 : NULL;
         
-        return $time_frame;
-        
+        return $main_features;        
+    }
+    
+    private function getSiteFeaturesOfArrayProp($feature_type, $user_requirement){
+        $options = [];
+        foreach ($feature_type as $value) {
+            array_push($options, ContactController::getExactFeatureDetails($user_requirement, $value));
+        }
+        return $options;
     }
     
     private function getExactFeatureDetails($feature_type, $user_requirement)
     {
         $features = (new SiteFeatures())->getFeature($feature_type);
-        $selected_feature = array(
-            "heading" => $features['heading'],
-            "title" => $features['title']
-        );
         foreach ($features['options'] as $value) 
         {
             if ($value['value'] == $user_requirement)
