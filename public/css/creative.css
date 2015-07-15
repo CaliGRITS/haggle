@@ -353,24 +353,6 @@ body {
     font-size: 17px;
 }
 
-
-/*9============================================================================================*/
-
-/*
- * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
- * http://cssreset.com
-*/
-
-/* HTML5 display-role reset for older browsers */
-
-
-
-.main-container-right {
-  position: fixed;
-  background-color: #d9d9d9;
-  width: 10%;
-  bottom:0;
-  margin-left: 1100px;
-  overflow: auto;
-  top: 400px;
+.header-back {
+    padding: 25px 0;
 }

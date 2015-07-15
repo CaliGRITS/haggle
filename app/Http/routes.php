@@ -16,4 +16,7 @@
 //});
 
 Route::get('/', 'IndexController@index');
+Route::get('/get/feature/{type}', 'IndexController@getFeature');
 Route::get('/calculate', 'CalculatorController@calculate');
+Route::post('/submit/contact', 'ContactController@createContactDetails');
+Route::post('/submit/test', 'ContactController@submitContact');

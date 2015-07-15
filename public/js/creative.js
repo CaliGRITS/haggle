@@ -4,6 +4,81 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+function uncheckEcommerceOptions(values, type) {
+    $.ajax({
+        type: "GET",
+        url: "get/feature/" + type,
+        cache: false,
+        success: function(data){
+            for (var i = 0; i < data.options.length; i++) {
+                delete values[values.indexOf(data.options[i].value)];
+            }                    
+            getTotalAmount(values);
+        }
+    });    
+}
+
+function viewTotal(obj){
+    var values=[];
+    
+    $('.sum-all:checkbox:checked').each(function() {
+        values.push(this.value);
+    });
+
+    $('.sum-all:radio:checked').each(function() {
+        values.push(this.value);
+    });
+    
+    if(values.indexOf('ecommerce') === -1) {
+        $('.uncheck-ecommerce-cart:checkbox:checked').each(function() {
+            $('.uncheck-ecommerce-cart').removeAttr('checked');
+            uncheckEcommerceOptions(values, 'ecommerce-payment');
+        });
+        
+        $('.unselect-ecommerce-products:radio:checked').each(function() {
+            $('.unselect-ecommerce-products').removeAttr('checked');
+            uncheckEcommerceOptions(values, 'ecommerce-upload-products');
+        });
+        
+        $('.unselect-ecommerce-quantity:radio:checked').each(function() {
+            $('.unselect-ecommerce-quantity').removeAttr('checked');
+            uncheckEcommerceOptions(values, 'ecommerce-product-quantity');
+        });
+       
+    }
+    
+    if(values.indexOf('portfolio') === -1) {      
+        $('.unselect-portfolio-features:radio:checked').each(function() {
+            $('.unselect-portfolio-features').removeAttr('checked');
+            uncheckEcommerceOptions(values, 'portfolio');
+        });
+    }
+    if(values.indexOf('blog') === -1) {
+        $('.unselect-blog-features:checkbox:checked').each(function() {
+            $('.unselect-blog-features').removeAttr('checked');
+            uncheckEcommerceOptions(values, 'blog');
+        });
+    }
+    getTotalAmount(values);  
+}
+
+function getTotalAmount(values) {
+    if ((values instanceof Array) && values.length > 0) {
+        console.log(values);
+        $.ajax({
+            type: "GET",
+            url: "calculate",
+            data: 'query=' + values,
+            cache: false,
+            success: function(total){
+                $("#total-amount").html(total);
+            }
+        });
+    } else {
+        $("#total-amount").html(0);
+    }
+}
+
 (function($) {
     "use strict"; // Start of use strict
     
@@ -16,19 +91,9 @@
     $('#portfolio-features').hide();
     $('#blog-features').hide();
     
-    $('#ecommerce').change(function(){
-//        $.ajax({
-//            type: "GET",
-//            url: "calculate",
-//            data: 'query=1',
-//            cache: false,
-//            success: function(html){
-//                    alert(html);
-//            }
-//        });
+    $('#ecommerce').change(function(vat){
         $("#ecommerce-features").toggle("slow", function(){
             this.checked;
-            console.log($("#ecommerce").val());
         });
     });
     

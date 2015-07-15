@@ -13,12 +13,12 @@ class SiteFeatures {
                 array(
                     "description" => "No, this is for a brand-new site ",
                     "price" => 1000,
-                    "value" => "no"
+                    "value" => "existing_no"
                 ),
                 array(
                     "description" => "Yes, I want my existing site re-built / re-designed",
                     "price" => 800,
-                    "value" => "yes"
+                    "value" => "existing_yes"
                 )
             ]
         );
@@ -74,17 +74,17 @@ class SiteFeatures {
                 array(
                     "description" => "Advanced Shopping Cart With Member Database (User's Have Accounts)",
                     "price" => 1000,
-                    "value" => "cart_with_members_db"
+                    "value" => "ecommerce_cart_with_members_db"
                 ),
                 array(
                     "description" => "Catalogue Features for Product Organization (Tags, Categories, Type, etc.)",
                     "price" => 1000,
-                    "value" => "catalogue_features"
+                    "value" => "ecommerce_catalogue_features"
                 ),
                 array(
                     "description" => "Ability to add, edit, or remove products on your own?",
                     "price" => 1000,
-                    "value" => "managing_products"
+                    "value" => "ecommerce_managing_products"
                 )
             ]
         );
@@ -100,12 +100,12 @@ class SiteFeatures {
                 array(
                     "description" => "Yes, please!",
                     "price" => 1000,
-                    "value" => "creator"
+                    "value" => "ecommerce_creator"
                 ),
                 array(
                     "description" => "No, I'll upload all the products myself.",
-                    "price" => 1000,
-                    "value" => "owner"
+                    "price" => 0,
+                    "value" => "ecommerce_owner"
                 )
             ]
         );
@@ -122,22 +122,22 @@ class SiteFeatures {
                 array(
                     "description" => "1-10",
                     "price" => 1000,
-                    "value" => "1-10"
+                    "value" => "ecommerce_1-10"
                 ),
                 array(
                     "description" => "11-50",
                     "price" => 1000,
-                    "value" => "11-50"
+                    "value" => "ecommerce_11-50"
                 ),
                 array(
                     "description" => "51-100",
                     "price" => 1000,
-                    "value" => "51-100"
+                    "value" => "ecommerce_51-100"
                 ),
                 array(
                     "description" => "101-500",
                     "price" => 1000,
-                    "value" => "101-300"
+                    "value" => "ecommerce_101-300"
                 )
             ]
         );
@@ -153,27 +153,27 @@ class SiteFeatures {
                 array(
                     "description" => "Up to 10",
                     "price" => 1000,
-                    "value" => "Up to 10"
+                    "value" => "portfolio_Upto_10"
                 ),
                 array(
                     "description" => "Up to 25",
                     "price" => 1000,
-                    "value" => "Up to 25"
+                    "value" => "portfolio_Upto_25"
                 ),
                 array(
                     "description" => "Up to 50",
                     "price" => 1000,
-                    "value" => "Up to 50"
+                    "value" => "portfolio_Upto_50"
                 ),
                 array(
                     "description" => "Up to 100",
                     "price" => 1000,
-                    "value" => "Up to 100"
+                    "value" => "portfolio_Upto_100"
                 ),
                 array(
                     "description" => "Over 100",
                     "price" => 1000,
-                    "value" => "Over 100"
+                    "value" => "portfolio_over_100"
                 )
             ]
         );
@@ -189,7 +189,7 @@ class SiteFeatures {
                 array(
                     "description" => "User Management / Member Registration",
                     "price" => 1000,
-                    "value" => "management_and_registration"
+                    "value" => "blog_management"
                 )
             ]
         );
@@ -206,17 +206,17 @@ class SiteFeatures {
                 array(
                     "description" => "Landing Page (1)",
                     "price" => 1000,
-                    "value" => "1"
+                    "value" => "size_1"
                 ),
                 array(
                     "description" => "2-50",
                     "price" => 1000,
-                    "value" => "2-50"
+                    "value" => "size_2-50"
                 ),
                 array(
                     "description" => "50+",
                     "price" => 1000,
-                    "value" => "50+"
+                    "value" => "size_above_50"
                 ),
             ]
         );
@@ -233,22 +233,22 @@ class SiteFeatures {
                 array(
                     "description" => "Advanced Search (Search content by categories, types, or other advanced fields)",
                     "price" => 1000,
-                    "value" => "advanced_search"
+                    "value" => "public_advanced_search"
                 ),
                 array(
                     "description" => "Social Buttons linking to Profiles",
                     "price" => 1000,
-                    "value" => "social_btn"
+                    "value" => "public_social_btn"
                 ),
                 array(
                     "description" => "Likeboxes",
                     "price" => 1000,
-                    "value" => "likeboxes"
+                    "value" => "public_likeboxes"
                 ),
                 array(
                     "description" => "Twitter or Facebook Social Feeds",
                     "price" => 1000,
-                    "value" => "feeds"
+                    "value" => "public_feeds"
                 )
             ]
         );
@@ -265,12 +265,12 @@ class SiteFeatures {
                 array(
                     "description" => "Yes, we will supply all necessary graphics",
                     "price" => 1000,
-                    "value" => "yes"
+                    "value" => "graphics_yes"
                 ),
                 array(
                     "description" => "We will need you to supply graphics",
                     "price" => 1000,
-                    "value" => "no"
+                    "value" => "graphics_no"
                 )
             ]
         );
@@ -287,7 +287,7 @@ class SiteFeatures {
                 array(
                     "description" => "I need a new logo as well",
                     "price" => 1000,
-                    "value" => "yes"
+                    "value" => "logo_yes"
                 )
             ]
         );
@@ -304,12 +304,12 @@ class SiteFeatures {
                 array(
                     "description" => "Yes",
                     "price" => 1000,
-                    "value" => "yes"
+                    "value" => "site_content_yes"
                 ),
                 array(
                     "description" => "No",
                     "price" => 1000,
-                    "value" => "no"
+                    "value" => "site_content_no"
                 )
             ]
         );
@@ -326,22 +326,22 @@ class SiteFeatures {
                 array(
                     "description" => "Less Than 1 Month",
                     "price" => 1000,
-                    "value" => "<1"
+                    "value" => "timeframe_less_1"
                 ),
                 array(
                     "description" => "2 Months",
                     "price" => 1000,
-                    "value" => "2"
+                    "value" => "timeframe_2"
                 ),
                 array(
                     "description" => "3 Months",
                     "price" => 1000,
-                    "value" => "3"
+                    "value" => "timeframe_3"
                 ),
                 array(
                     "description" => "Over 3 Months",
                     "price" => 1000,
-                    "value" => ">3"
+                    "value" => "timeframe_more_3"
                 ),
             ]
         );
@@ -380,6 +380,60 @@ class SiteFeatures {
             "time_frame" => $time_frame
         );
         return $all_features;
+    }
+    
+    public function getFeature($type = NULL)
+    {
+        if ($type === "existing")
+        {
+            return SiteFeatures::getBasicDetails();
+        }
+        if ($type === "main-feature")
+        {
+            return SiteFeatures::getMainWebsiteFeatures();
+        }
+        if ($type === "ecommerce-payment")
+        {
+            return SiteFeatures::getEcommercePaymentDetails();
+        }
+        if ($type === "ecommerce-upload-products")
+        {
+            return SiteFeatures::getEcommerceWhoUploadProducts();
+        }
+        if ($type === "ecommerce-product-quantity")
+        {
+            return SiteFeatures::getEcommerceProductQuantities();
+        }
+        if ($type === "portfolio")
+        {
+            return SiteFeatures::getPortfolioFeatures();
+        }
+        if ($type === "blog")
+        {
+            return SiteFeatures::getBlogFeatures();
+        }
+        if ($type === "size")
+        {
+            return SiteFeatures::getSizeOfSite();
+        }
+        if ($type === "public-site")
+        {
+            return SiteFeatures::getPublicSiteFeatures();
+        }
+        if ($type === "graphics")
+        {
+            return SiteFeatures::getGraphicsFeatures();
+        }
+        if ($type === "logo")
+        {
+            return SiteFeatures::getLogoDetails();
+        }
+        if ($type === "site-content")
+        {
+            return SiteFeatures::getSiteCOntent();
+        }
+//        $feature_type = ($type === "existing") ? SiteFeatures::getBasicDetails() : [];
+        return [];
     }
     
     
