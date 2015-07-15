@@ -59,7 +59,7 @@
                             </div>
 
                             <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"/>
-                            <input type="hidden" name="queries" value="<?php print_r($site_requirement); ?>"/>
+                            <input type="hidden" name="site_requirements" value="<?php print_r($site_requirement); ?>"/>
                             <input type="submit" class="btn btn-success" value="Submit"/>
                         </form>
                     </div>

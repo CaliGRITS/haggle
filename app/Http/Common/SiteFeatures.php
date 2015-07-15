@@ -432,6 +432,10 @@ class SiteFeatures {
         {
             return SiteFeatures::getSiteCOntent();
         }
+        if ($type === "time-frame")
+        {
+            return SiteFeatures::getTimeFrameDetails();
+        }
 //        $feature_type = ($type === "existing") ? SiteFeatures::getBasicDetails() : [];
         return [];
     }
