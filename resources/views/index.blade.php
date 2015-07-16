@@ -1,4 +1,66 @@
-@include('template.header')    
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Welcome | {{ APP_NAME }}</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css') }}" type="text/css">
+
+    <!-- Custom Fonts -->    
+    <link rel="stylesheet" href="{{ URL::asset('font-awesome/css/font-awesome.min.css') }}" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="{{ URL::asset('css/animate.min.css') }}" type="text/css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ URL::asset('css/creative.css') }}" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body id="page-top">
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand page-scroll" href="#page-top">{{ APP_NAME }}</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="#about">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#calculate">Calculate</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                    <li>
+                        @if (session('is_logged_in'))
+                            <a class="page-scroll" href="logout">Logout</a>
+                        @else
+                            <a class="page-scroll" href="login">Login</a>
+                        @endif
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
 
     <section class="bg-primary" id="about">
         <div class="container">
@@ -7,12 +69,12 @@
                     <h2 class="section-heading">We've got what you need!</h2>
                     <hr class="light">
                     <p class="text-faded">Huggle helps you to "Get Noticed". Whatever you envisage, we'll develop it for you. If you are searching for a company that can understand your needs, boost your sales and take your business to a new high, then Huggle is the company to reckon with. We believe that the sky is the limit and our team makes sure that you reach there.</p>
-                    <a href="#services" class="btn btn-primary btn-xl page-scroll">Get Started</a>
+                    <a href="#calculate" class="btn btn-primary btn-xl page-scroll">Get Started</a>
                 </div>
             </div>
         </div>
     </section>
-    <section id="services">
+    <section id="calculate">
         <form name="calculate_form" method="POST" action="submit/contact">
             <div class="container">
                 <div class="row">
@@ -127,81 +189,85 @@
                                 </div>
                             </div>
                             <br/><br/>
-                            <div class="panel panel-info wow bounceIn" id="size">
-                                <div class="panel-heading feature-heading-font">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" href="#size_collapse">{{ $size['heading'] }}</a>
-                                    </h4>
+                            <div class="wow bounceIn">
+                                <div class="panel panel-info" id="size">
+                                    <div class="panel-heading feature-heading-font">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" href="#size_collapse">{{ $size['heading'] }}</a>
+                                        </h4>
+                                    </div>
+                                    <div id="size_collapse" class="panel-collapse collapse in">
+                                        <div class="panel-body">
+                                            <p><strong> {{ $size['title'] }} </strong></p>
+                                            <div class="row col-lg-12">
+                                                @foreach ($size['options'] as $option)
+                                                    <input type="radio" class="sum-all" onChange="viewTotal(this);" name="size" value="{{ $option['value'] }}"/> {{ $option['description'] }}<br/>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div id="size_collapse" class="panel-collapse collapse in">
-                                    <div class="panel-body">
-                                        <p><strong> {{ $size['title'] }} </strong></p>
-                                        <div class="row col-lg-12">
-                                            @foreach ($size['options'] as $option)
-                                                <input type="radio" class="sum-all" onChange="viewTotal(this);" name="size" value="{{ $option['value'] }}"/> {{ $option['description'] }}<br/>
-                                            @endforeach
+                                <br/><br/>
+                                <div class="panel panel-info" id="public-site-features">
+                                    <div class="panel-heading feature-heading-font">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" href="#public_site_collapse">{{ $public_site_features['heading'] }}</a>
+                                        </h4>
+                                    </div>
+                                    <div id="public_site_collapse" class="panel-collapse collapse in">
+                                        <div class="panel-body">
+                                            <p><strong> {{ $public_site_features['title'] }} </strong></p>
+                                            <div class="row col-lg-12">
+                                                @foreach ($public_site_features['options'] as $option)
+                                                    <input type="checkbox" class="sum-all" onChange="viewTotal(this);" name="public_site_features[]" value="{{ $option['value'] }}"/> {{ $option['description'] }}<br/>
+                                                @endforeach
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <br/><br/>
-                            <div class="panel panel-info wow bounceIn" id="public-site-features">
-                                <div class="panel-heading feature-heading-font">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" href="#public_site_collapse">{{ $public_site_features['heading'] }}</a>
-                                    </h4>
-                                </div>
-                                <div id="public_site_collapse" class="panel-collapse collapse in">
-                                    <div class="panel-body">
-                                        <p><strong> {{ $public_site_features['title'] }} </strong></p>
-                                        <div class="row col-lg-12">
-                                            @foreach ($public_site_features['options'] as $option)
-                                                <input type="checkbox" class="sum-all" onChange="viewTotal(this);" name="public_site_features[]" value="{{ $option['value'] }}"/> {{ $option['description'] }}<br/>
-                                            @endforeach
+                            <div class="wow bounceIn">
+                                <div class="panel panel-info wow bounceIn" id="graphics">                            
+                                    <div class="panel-heading feature-heading-font">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" href="#graphics_collapse">{{ $graphics_features['heading'] }}</a>
+                                        </h4>
+                                    </div>
+                                    <div id="graphics_collapse" class="panel-collapse collapse in">
+                                        <div class="panel-body">
+                                            <p><strong> {{ $graphics_features['title'] }} </strong></p>
+                                            <div class="row col-lg-12">
+                                                @foreach ($graphics_features['options'] as $option)
+                                                    <input type="radio" class="sum-all" onChange="viewTotal(this);" name="graphics_features" value="{{ $option['value'] }}"/> {{ $option['description'] }}<br/>
+                                                @endforeach
+                                            </div>
+                                        </div>                                
+                                        <div class="panel-body">
+                                            <p><strong> {{ $logo_details['title'] }} </strong></p>
+                                            <div class="row col-lg-12">
+                                                @foreach ($logo_details['options'] as $option)
+                                                    <input type="checkbox" class="sum-all" onChange="viewTotal(this);" name="is_logo_required[]" value="{{ $option['value'] }}"/> {{ $option['description'] }}<br/>
+                                                @endforeach
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <br/><br/>
-                            <div class="panel panel-info wow bounceIn" id="graphics">
-                                <div class="panel-heading feature-heading-font">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" href="#graphics_collapse">{{ $graphics_features['heading'] }}</a>
-                                    </h4>
-                                </div>
-                                <div id="graphics_collapse" class="panel-collapse collapse in">
-                                    <div class="panel-body">
-                                        <p><strong> {{ $graphics_features['title'] }} </strong></p>
-                                        <div class="row col-lg-12">
-                                            @foreach ($graphics_features['options'] as $option)
-                                                <input type="radio" class="sum-all" onChange="viewTotal(this);" name="graphics_features" value="{{ $option['value'] }}"/> {{ $option['description'] }}<br/>
-                                            @endforeach
-                                        </div>
-                                    </div>                                
-                                    <div class="panel-body">
-                                        <p><strong> {{ $logo_details['title'] }} </strong></p>
-                                        <div class="row col-lg-12">
-                                            @foreach ($logo_details['options'] as $option)
-                                                <input type="checkbox" class="sum-all" onChange="viewTotal(this);" name="is_logo_required[]" value="{{ $option['value'] }}"/> {{ $option['description'] }}<br/>
-                                            @endforeach
-                                        </div>
+                                <br/><br/>
+                                <div class="panel panel-info" id="site-content">
+                                    <div class="panel-heading feature-heading-font">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" href="#site_content_collapse">{{ $site_content['heading'] }}</a>
+                                        </h4>
                                     </div>
-                                </div>
-                            </div>
-                            <br/><br/>
-                            <div class="panel panel-info wow bounceIn" id="site-content">
-                                <div class="panel-heading feature-heading-font">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" href="#site_content_collapse">{{ $site_content['heading'] }}</a>
-                                    </h4>
-                                </div>
-                                <div id="site_content_collapse" class="panel-collapse collapse in">
-                                    <div class="panel-body">
-                                        <p><strong> {{ $site_content['title'] }} </strong></p>
-                                        <div class="row col-lg-12">
-                                            @foreach ($site_content['options'] as $option)
-                                                <input type="radio" class="sum-all" onChange="viewTotal(this);" name="site_content" value="{{ $option['value'] }}"/> {{ $option['description'] }}<br/>
-                                            @endforeach
+                                    <div id="site_content_collapse" class="panel-collapse collapse in">
+                                        <div class="panel-body">
+                                            <p><strong> {{ $site_content['title'] }} </strong></p>
+                                            <div class="row col-lg-12">
+                                                @foreach ($site_content['options'] as $option)
+                                                    <input type="radio" class="sum-all" onChange="viewTotal(this);" name="site_content" value="{{ $option['value'] }}"/> {{ $option['description'] }}<br/>
+                                                @endforeach
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -250,57 +316,5 @@
             </div>
         </form>
     </section>
-
-    <section id="something">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">At Your Service</h2>
-                    <hr class="primary">
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="service-box">
-                        <i class="fa fa-4x fa-diamond wow bounceIn text-primary"></i>
-                        <h3>Sturdy Templates</h3>
-                        <p class="text-muted">Our templates are updated regularly so they don't break.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="service-box">
-                        <i class="fa fa-4x fa-paper-plane wow bounceIn text-primary" data-wow-delay=".1s"></i>
-                        <h3>Ready to Ship</h3>
-                        <p class="text-muted">You can use this theme as is, or you can make changes!</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="service-box">
-                        <i class="fa fa-4x fa-newspaper-o wow bounceIn text-primary" data-wow-delay=".2s"></i>
-                        <h3>Up to Date</h3>
-                        <p class="text-muted">We update dependencies to keep things fresh.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="service-box">
-                        <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
-                        <h3>Made with Love</h3>
-                        <p class="text-muted">You have to make your websites with love these days!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <aside class="bg-dark">
-        <div class="container text-center">
-            <div class="call-to-action">
-                <h2>Free Download at Start Bootstrap!</h2>
-                <a href="#" class="btn btn-default btn-xl wow tada">Download Now!</a>
-            </div>
-        </div>
-    </aside>
-
+    
 @include('template.footer')

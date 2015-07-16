@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Common\SiteFeatures;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class CalculatorController extends Controller
 {
@@ -55,6 +56,14 @@ class CalculatorController extends Controller
             }
         }
         return 0;
+    }
+    
+    public function saveAmount(Request $request)
+    {
+        if ($request->input('query'))
+        {
+            Session::put('amount', $request->input('query'));
+        }
     }
     
 }

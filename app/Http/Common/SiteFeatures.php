@@ -12,12 +12,12 @@ class SiteFeatures {
             "options" => [
                 array(
                     "description" => "No, this is for a brand-new site ",
-                    "price" => 1000,
+                    "price" => 5000,
                     "value" => "existing_no"
                 ),
                 array(
                     "description" => "Yes, I want my existing site re-built / re-designed",
-                    "price" => 800,
+                    "price" => 1300,
                     "value" => "existing_yes"
                 )
             ]
@@ -33,7 +33,7 @@ class SiteFeatures {
                 array(
                     "title" => "Ecommerce",
                     "description" => "Select this box if your website will have any kind of commerce, shopping, or sales capabilities.",
-                    "price" => 1000,
+                    "price" => 5000,
                     "value" => "ecommerce"
                 ),
                 array(
@@ -45,19 +45,19 @@ class SiteFeatures {
                 array(
                     "title" => "Portfolio",
                     "description" => "Select this box if your website will have image galleries, portfolios, or photo pages (ex. modeling shoots, design portfolios, product galleries).",
-                    "price" => 1000,
+                    "price" => 1999,
                     "value" => "portfolio"
                 ),
                 array(
                     "title" => "Blog",
                     "description" => "Select this box if your website will have a working blog, whether that's the primary focus or an addition to the site. We recommend blogs on all sites for a variety of reasons.",
-                    "price" => 1000,
+                    "price" => 1999,
                     "value" => "blog"
                 ),
                 array(
                     "title" => "Community (Forum, Chat Room)",
                     "description" => "Select this box if your website will have an interactive forum, many blog authors that can sign up independent, or acts as a social community for multiple people.",
-                    "price" => 1000,
+                    "price" => 2300,
                     "value" => "community"
                 )
             ]
@@ -73,17 +73,17 @@ class SiteFeatures {
             "options" => [
                 array(
                     "description" => "Advanced Shopping Cart With Member Database (User's Have Accounts)",
-                    "price" => 1000,
+                    "price" => 300,
                     "value" => "ecommerce_cart_with_members_db"
                 ),
                 array(
                     "description" => "Catalogue Features for Product Organization (Tags, Categories, Type, etc.)",
-                    "price" => 1000,
+                    "price" => 400,
                     "value" => "ecommerce_catalogue_features"
                 ),
                 array(
                     "description" => "Ability to add, edit, or remove products on your own?",
-                    "price" => 1000,
+                    "price" => 500,
                     "value" => "ecommerce_managing_products"
                 )
             ]
@@ -99,7 +99,7 @@ class SiteFeatures {
             "options" => [
                 array(
                     "description" => "Yes, please!",
-                    "price" => 1000,
+                    "price" => 999,
                     "value" => "ecommerce_creator"
                 ),
                 array(
@@ -121,22 +121,22 @@ class SiteFeatures {
             "options" => [
                 array(
                     "description" => "1-10",
-                    "price" => 1000,
+                    "price" => 400,
                     "value" => "ecommerce_1-10"
                 ),
                 array(
                     "description" => "11-50",
-                    "price" => 1000,
+                    "price" => 600,
                     "value" => "ecommerce_11-50"
                 ),
                 array(
                     "description" => "51-100",
-                    "price" => 1000,
+                    "price" => 800,
                     "value" => "ecommerce_51-100"
                 ),
                 array(
                     "description" => "101-500",
-                    "price" => 1000,
+                    "price" => 1200,
                     "value" => "ecommerce_101-300"
                 )
             ]
@@ -152,27 +152,27 @@ class SiteFeatures {
             "options" => [
                 array(
                     "description" => "Up to 10",
-                    "price" => 1000,
+                    "price" => 800,
                     "value" => "portfolio_Upto_10"
                 ),
                 array(
                     "description" => "Up to 25",
-                    "price" => 1000,
+                    "price" => 980,
                     "value" => "portfolio_Upto_25"
                 ),
                 array(
                     "description" => "Up to 50",
-                    "price" => 1000,
+                    "price" => 1200,
                     "value" => "portfolio_Upto_50"
                 ),
                 array(
                     "description" => "Up to 100",
-                    "price" => 1000,
+                    "price" => 1400,
                     "value" => "portfolio_Upto_100"
                 ),
                 array(
                     "description" => "Over 100",
-                    "price" => 1000,
+                    "price" => 1700,
                     "value" => "portfolio_over_100"
                 )
             ]
@@ -188,7 +188,7 @@ class SiteFeatures {
             "options" => [
                 array(
                     "description" => "User Management / Member Registration",
-                    "price" => 1000,
+                    "price" => 6000,
                     "value" => "blog_management"
                 )
             ]
@@ -205,7 +205,7 @@ class SiteFeatures {
             "options" => [
                 array(
                     "description" => "Landing Page (1)",
-                    "price" => 1000,
+                    "price" => 500,
                     "value" => "size_1"
                 ),
                 array(
@@ -215,7 +215,7 @@ class SiteFeatures {
                 ),
                 array(
                     "description" => "50+",
-                    "price" => 1000,
+                    "price" => 2000,
                     "value" => "size_above_50"
                 ),
             ]
@@ -232,22 +232,22 @@ class SiteFeatures {
             "options" => [
                 array(
                     "description" => "Advanced Search (Search content by categories, types, or other advanced fields)",
-                    "price" => 1000,
+                    "price" => 2000,
                     "value" => "public_advanced_search"
                 ),
                 array(
                     "description" => "Social Buttons linking to Profiles",
-                    "price" => 1000,
+                    "price" => 2000,
                     "value" => "public_social_btn"
                 ),
                 array(
                     "description" => "Likeboxes",
-                    "price" => 1000,
+                    "price" => 2000,
                     "value" => "public_likeboxes"
                 ),
                 array(
                     "description" => "Twitter or Facebook Social Feeds",
-                    "price" => 1000,
+                    "price" => 2000,
                     "value" => "public_feeds"
                 )
             ]
@@ -264,12 +264,12 @@ class SiteFeatures {
             "options" => [
                 array(
                     "description" => "Yes, we will supply all necessary graphics",
-                    "price" => 1000,
+                    "price" => 1299,
                     "value" => "graphics_yes"
                 ),
                 array(
                     "description" => "We will need you to supply graphics",
-                    "price" => 1000,
+                    "price" => 800,
                     "value" => "graphics_no"
                 )
             ]
@@ -286,7 +286,7 @@ class SiteFeatures {
             "options" => [
                 array(
                     "description" => "I need a new logo as well",
-                    "price" => 1000,
+                    "price" => 2500,
                     "value" => "logo_yes"
                 )
             ]
@@ -303,12 +303,12 @@ class SiteFeatures {
             "options" => [
                 array(
                     "description" => "Yes",
-                    "price" => 1000,
+                    "price" => 4000,
                     "value" => "site_content_yes"
                 ),
                 array(
                     "description" => "No",
-                    "price" => 1000,
+                    "price" => 0,
                     "value" => "site_content_no"
                 )
             ]
@@ -325,22 +325,22 @@ class SiteFeatures {
             "options" => [
                 array(
                     "description" => "Less Than 1 Month",
-                    "price" => 1000,
+                    "price" => 3000,
                     "value" => "timeframe_less_1"
                 ),
                 array(
                     "description" => "2 Months",
-                    "price" => 1000,
+                    "price" => 4444,
                     "value" => "timeframe_2"
                 ),
                 array(
                     "description" => "3 Months",
-                    "price" => 1000,
+                    "price" => 6690,
                     "value" => "timeframe_3"
                 ),
                 array(
                     "description" => "Over 3 Months",
-                    "price" => 1000,
+                    "price" => 1200,
                     "value" => "timeframe_more_3"
                 ),
             ]

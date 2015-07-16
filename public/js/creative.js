@@ -72,6 +72,7 @@ function getTotalAmount(values) {
             cache: false,
             success: function(total){
                 $("#total-amount").html(total);
+                saveAmount(total);
             }
         });
     } else {
@@ -79,9 +80,20 @@ function getTotalAmount(values) {
     }
 }
 
+function saveAmount(amount){
+     $.ajax({
+        type: "GET",
+        url: "save/amount",
+        data: 'query=' + amount,
+        cache: false,
+        success: function(total){
+            console.log(total);
+        }
+    });
+}
+
 (function($) {
     "use strict"; // Start of use strict
-    
     $(window).scroll(function(){
         var s = Math.max(70,(530-$(this).scrollTop()));
         $("#theFixed").css("top", s);
