@@ -64,14 +64,13 @@ function viewTotal(obj){
 
 function getTotalAmount(values) {
     if ((values instanceof Array) && values.length > 0) {
-        console.log(values);
         $.ajax({
             type: "GET",
             url: "calculate",
             data: 'query=' + values,
             cache: false,
-            success: function(total){
-                $("#total-amount").html(total);
+            success: function(total){                
+                $("#total-amount").html("&#x20B9 <span style=\"font-size: 20px\">" + total + "</span> Only (Approx.)");
                 saveAmount(total);
             }
         });
@@ -87,13 +86,33 @@ function saveAmount(amount){
         data: 'query=' + amount,
         cache: false,
         success: function(total){
-            console.log(total);
+            //console.log(total);
+        }
+    });
+}
+
+function getInitialAmount() {
+    $.ajax({
+        type: "GET",
+        url: "get/feature/" + "existing",
+        cache: false,
+        success: function(data){
+            for (var i = 0; i < data.options.length; i++) {
+                if (data.options[i].value === "existing_no") {
+                    $("#total-amount").html("&#x20B9 <span style=\"font-size: 20px\">" + data.options[i].price + "</span> Only (Approx.)");
+                } else {
+                    return 0;
+                }
+            }
         }
     });
 }
 
 (function($) {
-    "use strict"; // Start of use strict
+    "use strict";
+    
+    getInitialAmount();
+    
     $(window).scroll(function(){
         var s = Math.max(70,(530-$(this).scrollTop()));
         $("#theFixed").css("top", s);

@@ -25,7 +25,6 @@
     <script src="{{ URL::asset('js/jquery.fittext.js') }}"></script>
     <script src="{{ URL::asset('js/wow.min.js') }}"></script>
     <script src="{{ URL::asset('js/creative.js') }}"></script>
-
 </body>
 
 </html>

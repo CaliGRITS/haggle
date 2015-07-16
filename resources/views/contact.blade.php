@@ -4,24 +4,18 @@
 <head>
 
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/> 
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/> 
 
     <title>Contact | {{ APP_NAME }}</title>
-
-    <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css') }}" type="text/css">
-
-    <!-- Custom Fonts -->    
     <link rel="stylesheet" href="{{ URL::asset('font-awesome/css/font-awesome.min.css') }}" type="text/css">
-
-    <!-- Plugin CSS -->
     <link rel="stylesheet" href="{{ URL::asset('css/animate.min.css') }}" type="text/css">
-
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ URL::asset('css/creative.css') }}" type="text/css">
+    <script type="text/javascript" src="{{ URL::asset('http://maps.googleapis.com/maps/api/js?sensor=false') }}"></script>
+    
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -31,7 +25,7 @@
     <![endif]-->
 
 </head>
-<body id="page-top">
+<body id="page-top" onload="initialize()">
 
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
@@ -48,14 +42,14 @@
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
-                    </li>
-                    <li>
-                        @if (session('is_logged_in'))
-                            <a class="page-scroll" href="../logout">Logout</a>
-                        @else
-                            <a class="page-scroll" href="../login">Login</a>
-                        @endif
-                    </li>
+                    </li>                    
+                    @if (session('is_logged_in'))
+                        <li><a class="page-scroll" href="../show/clients">Clients</a></li>
+                        <li><a class="page-scroll" href="../logout">Logout</a></li>                            
+                    @else
+                         <li><a class="page-scroll" href="../login">Login</a> </li>
+                    @endif
+                    
                 </ul>
             </div>
         </div>
@@ -105,7 +99,7 @@
 
                             <div class="form-group">
                                 <label for="address">Address</label>
-                                <textarea class="form-control" name="address" class="form-control" id="address" placeholder="Enter your address" rows="3" required><?php if (isset($address)){echo $address;} ?></textarea>                            
+                                <input type="text" class="form-control" id="address" name="address" value="<?php if (isset($address)){echo $address;} ?>" placeholder="Enter your address" required>                        
                                 <div style="color:red" class="wow bounceIn"><?php if (isset($error) && isset($error['address'])){ echo ($error['address']);} ?></div>
                             </div>
 
@@ -134,4 +128,5 @@
                 </div>
             </div>
     </section>
+    <script src="{{ URL::asset('js/location.js') }}"></script>
 @include('template.footer')

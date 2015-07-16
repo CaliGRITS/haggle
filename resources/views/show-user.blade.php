@@ -49,20 +49,19 @@
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
                     </li>
-                    <li>
-                        @if (session('is_logged_in'))
-                            <a class="page-scroll" href="../logout">Logout</a>
-                        @else
-                            <a class="page-scroll" href="../login">Login</a>
-                        @endif
-                    </li>
+                    @if (session('is_logged_in'))
+                        <li><a class="page-scroll" href="../show/clients">Clients</a></li>
+                        <li><a class="page-scroll" href="../logout">Logout</a></li>                            
+                    @else
+                         <li><a class="page-scroll" href="../login">Login</a> </li>
+                    @endif
                 </ul>
             </div>
         </div>
     </nav>
 
 
-    <section class="bg-primary header-back" id="about"></section>
+    <section class="bg-primary header-back" id="clients"></section>
     
     
     <section id="services">

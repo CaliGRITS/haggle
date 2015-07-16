@@ -280,7 +280,10 @@ class ContactController extends Controller
         return TRUE;
     }
     
-    
+    public function testAll()
+    {
+        return view('test');
+    }
     
     private function sendContactEmail()
     {

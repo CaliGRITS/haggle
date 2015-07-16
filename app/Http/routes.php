@@ -17,7 +17,7 @@
 define('APP_NAME','haggle');
 define('ADMIN_EMAIL','amitsinhaee2013@gmail.com');
 define('ADMIN_NAME','Admin');
-define('SENDER_EMAIL','amitsinha559@gmail.com');
+define('SENDER_EMAIL','haggle.site@gmail.com');
 
 Route::get('/home', 'IndexController@index');
 Route::get('/', 'IndexController@index');
@@ -35,3 +35,5 @@ Route::get('/show/{id}', 'AdminController@show');
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
+Route::get('/test', 'ContactController@testAll');

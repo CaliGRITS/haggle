@@ -49,13 +49,12 @@
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
                     </li>
-                    <li>
-                        @if (session('is_logged_in'))
-                            <a class="page-scroll" href="logout">Logout</a>
-                        @else
-                            <a class="page-scroll" href="login">Login</a>
-                        @endif
-                    </li>
+                    @if (session('is_logged_in'))
+                        <li><a class="page-scroll" href="show/clients">Clients</a></li>
+                        <li><a class="page-scroll" href="logout">Logout</a></li>                            
+                    @else
+                         <li><a class="page-scroll" href="login">Login</a> </li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -302,7 +301,7 @@
                         </h4>
                     </div>
                     <div class="panel-body">
-                        Rs. <span id="total-amount">0</span>
+                        <span id="total-amount"></span>
                     </div>
                 </div>
             </div>
