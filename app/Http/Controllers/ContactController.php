@@ -95,7 +95,7 @@ class ContactController extends Controller
         if ($is_valid_pincode['status'])
         {
             $data['error'] = ["pincode" => $is_valid_pincode['message']];
-            return view('contact', $data);
+            //return view('contact', $data);
         }
         
         DB::beginTransaction();

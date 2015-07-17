@@ -99,7 +99,9 @@ function getInitialAmount() {
         success: function(data){
             for (var i = 0; i < data.options.length; i++) {
                 if (data.options[i].value === "existing_no") {
-                    $("#total-amount").html("&#x20B9 <span style=\"font-size: 20px\">" + data.options[i].price + "</span> Only (Approx.)");
+                    var initailAmount = data.options[i].price;
+                    saveAmount(initailAmount);
+                    $("#total-amount").html("&#x20B9 <span style=\"font-size: 20px\">" + initailAmount + "</span> Only (Approx.)");
                 } else {
                     return 0;
                 }

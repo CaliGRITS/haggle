@@ -15,7 +15,7 @@
 //    return view('welcome');
 //});
 define('APP_NAME','haggle');
-define('ADMIN_EMAIL','amitsinhaee2013@gmail.com');
+define('ADMIN_EMAIL','sourav@codez.in');
 define('ADMIN_NAME','Admin');
 define('SENDER_EMAIL','haggle.site@gmail.com');
 

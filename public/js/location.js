@@ -27,40 +27,43 @@ function codeLatLng(lat, lng) {
                 for (var i=0; i<results[0].address_components.length; i++) {
                     for (var b=0;b<results[0].address_components[i].types.length;b++) {
                         if (results[0].address_components[i].types[b] === "country") {                    
-                            country = results[0].address_components[i];
-                            $('#country').val(country.long_name);
+                            var country = results[0].address_components[i] || "";
+                            $('#country').val(country.long_name || "");
+                            $('#country-code').val(country.short_name || "");
                             break;
                         }
                 
                         if (results[0].address_components[i].types[b] === "postal_code") {
-                            postal_code= results[0].address_components[i];
-                            $('#pincode').val(postal_code.long_name);
+                            var postal_code= results[0].address_components[i] || "";
+                            $('#pincode').val(postal_code.long_name || "");
                             break;
                         }
 
                         if (results[0].address_components[i].types[b] === "administrative_area_level_1") {
-                            state= results[0].address_components[i];
-                            $('#state').val(state.long_name);
+                            var state = results[0].address_components[i] || "";
+                            $('#state').val(state.long_name || "");
                             break;
                         }
 
                         if (results[0].address_components[i].types[b] === "administrative_area_level_2") {
-                            city= results[0].address_components[i];
+                            var city= results[0].address_components[i];
                             break;
                         }
                         if (results[0].address_components[i].types[b] === "locality") {
-                            add2= results[0].address_components[i];
+                            var add2= results[0].address_components[i];
                             break;
                         }
                         if (results[0].address_components[i].types[b] === "sublocality_level_1") {
-                            add1= results[0].address_components[i];
+                            var add1= results[0].address_components[i];
                             break;
                         }
                     }
                 }
-                var address = add1.long_name + ", " + add2.long_name + ", " + city.long_name;
-                $('#address').val(address);
-
+                var address1 = (add1) ? add1.long_name : "";
+                var address2 = (add2) ? add2.long_name : "";
+                var cityO = (city) ? city.long_name : "";
+                var addressFull = address1 + ", " + address2 + ", " + cityO;
+                $('#address').val(addressFull);
 
             } else {
                 alert("Unable to trace your location. Please enter yourself");

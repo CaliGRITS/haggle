@@ -9,7 +9,7 @@
         {
             DB::table('users')->delete();
 
-            User::create(['name' => 'amit', 'email' => 'amit@gmail.com', 'password' => bcrypt('pass'), 'user_type' => '1']);
+            User::create(['name' => 'Saurav', 'email' => 'sourav@codez.in', 'password' => bcrypt('pass'), 'user_type' => '1']);
         }
 
     }
